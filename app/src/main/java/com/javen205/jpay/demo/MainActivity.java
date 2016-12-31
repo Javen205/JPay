@@ -9,6 +9,8 @@ import android.widget.Toast;
 import com.javen205.jpay.IPay;
 import com.javen205.jpay.entity.Order;
 
+import xxxxx.com.R;
+
 
 public class MainActivity extends AppCompatActivity {
 
