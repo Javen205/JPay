@@ -1,11 +1,11 @@
-apply plugin: 'com.android.library'
-//添加maven插件
-apply plugin: 'maven'
+apply plugin: 'com.android.application'
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
 
     defaultConfig {
+        applicationId "com.javen205.testlib"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
@@ -20,18 +20,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
 
-    //定义上传行为
-    uploadArchives {
-        //仓库基于maven
-        repositories.mavenDeployer {
-            //配置上传的url
-            repository(url: "http://192.168.1.100:8081/repository/com.javen205/") {
-                authentication(userName: "javen", password: "javen205")
-            }
-            pom.version = "0.0.1"
-            pom.artifactId = "JPay"
-            pom.groupId = "com.javen205"
+allprojects {
+    repositories {
+        maven {
+            url "http://192.168.1.100:8081/repository/com.javen205/"
         }
     }
 }
@@ -43,4 +37,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.javen205:JPay:0.0.1'
 }
