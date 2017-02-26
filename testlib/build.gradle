@@ -1,4 +1,8 @@
 apply plugin: 'com.android.application'
+// 根节点添加
+version = "0.0.1"
+// 根节点添加
+group = "com.javen205.jpay"
 
 android {
     compileSdkVersion 24
