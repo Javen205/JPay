@@ -1,5 +1,10 @@
+
+
 # JPay
 微信支付APP支付、支付宝APP支付
+
+[![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Download](https://api.bintray.com/packages/javendev/maven/JPay/images/download.svg)](https://dl.bintray.com/javendev/maven/JPay/_latestVersion)
 
 > Android微信App支付
 
