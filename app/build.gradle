@@ -4,7 +4,7 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
     defaultConfig {
-        applicationId "xxxxx.com"
+        applicationId "mayihuijia.com"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
@@ -29,6 +29,9 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -38,6 +41,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
-    compile project(':jpaylib')
-    
+//    compile project(':jpaysdk')
+    compile 'com.javen205.jpay:jpaysdk:0.0.1'
 }

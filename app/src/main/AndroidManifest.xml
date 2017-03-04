@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="xxxxx.com">
+    package="mayihuijia.com">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -23,12 +22,19 @@
             </intent-filter>
         </activity>
 
+
+        <!-- 微信支付 -->
         <activity
-            android:name="mayihuijia.com.wxapi.WXPayEntryActivity"
+            android:name="com.javen205.jpay.weixin.WxPayCallBackActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity-alias
+            android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
-            android:theme="@android:style/Theme.Translucent"
-            android:launchMode="singleTop" >
-        </activity>
+            android:targetActivity="com.javen205.jpay.weixin.WxPayCallBackActivity" />
+        <!-- 微信支付 end -->
+
 
         <!-- alipay sdk begin -->
 
