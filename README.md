@@ -3,6 +3,8 @@
 # JPay
 
 对微信支付和支付宝支付的App端SDK进行二次封装，对外提供一个较为简单的接口和支付结果回调
+
+
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/javendev/maven/JPay/images/download.svg)](https://dl.bintray.com/javendev/maven/JPay/_latestVersion)
 
