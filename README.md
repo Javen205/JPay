@@ -6,7 +6,7 @@
 
 
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Download](https://api.bintray.com/packages/javendev/maven/JPay/images/download.svg)](https://dl.bintray.com/javendev/maven/JPay/_latestVersion)
+[![Download](https://api.bintray.com/packages/javendev/maven/JPay/images/download.svg)](https://bintray.com/javendev/maven/JPay/_latestVersion)
 
 参考资料
 
@@ -18,13 +18,9 @@
 ### 1、引入
 
 ```
- maven{
-     url "https://dl.bintray.com/javendev/maven"
-}
-```
-```
 compile 'com.javen205.jpay:jpaysdk:0.0.1'
 ```
+
 ### 2. Android Manifest配置
 
 ##### 2.1权限声明
