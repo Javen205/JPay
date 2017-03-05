@@ -171,7 +171,7 @@ Alipay.getInstance(mContext).startAliPay(orderInfo, new JPay.JPayListener() {
 
 > appId以及相关的key我们都从服务端获取
 
-#### 4.1 服务端使用说明
+#### 4.1 客户端使用说明
  1. 将`AndroidManifest.xml` 的包名修改为申请应用的包名
  2. 将应用中的`build.gradle`的 `applicationId`修改为申请应用的包名
  3. 测试的时候修改默认的签名key
