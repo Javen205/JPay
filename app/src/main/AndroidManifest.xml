@@ -54,6 +54,11 @@
         </activity>
 
         <!-- alipay sdk end -->
+
+        <meta-data
+            android:name="CHANNEL"
+            android:value="${CHANNEL_VALUE}" />
+
     </application>
 
 </manifest>

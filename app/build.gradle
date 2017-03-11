@@ -8,7 +8,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -18,19 +18,46 @@ android {
             keyAlias '1'
             keyPassword '123456'
         }
+        debugConfig {
+            storeFile file("wxkey")
+            storePassword "123456"
+            keyAlias "1"
+            keyPassword "123456"
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            // 自定义输出配置
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为JPay_0.0.1_xiaomi.apk
+                        def fileName = "JPay_${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
         }
         debug {
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debugConfig
         }
     }
     lintOptions {
         abortOnError false
+    }
+    //多渠道打包
+    productFlavors {
+        xiaomi {}
+        baidu {}
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
     }
 }
 
@@ -41,6 +68,5 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
-//    compile project(':jpaysdk')
     compile 'com.javen205.jpay:jpaysdk:0.0.1'
 }
