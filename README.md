@@ -100,6 +100,7 @@ JPay.getIntance(mContext).toPay(JPay.PayMode.WXPAY, payParameters, new JPay.JPay
   "partnerId": "",
   "prepayId": "",
   "sign": "",
+  "nonceStr" : "",
   "timeStamp": ""
 }
 ```
