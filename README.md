@@ -8,17 +8,15 @@
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/javendev/maven/JPay/images/download.svg)](https://bintray.com/javendev/maven/JPay/_latestVersion)
 
-参考资料
-
-[Android版-微信APP支付](http://www.jianshu.com/p/febf7c2eea82)
-[Android版-支付宝APP支付](http://www.jianshu.com/p/3d91248aea4b)
+[版本更新记录](https://github.com/Javen205/JPay/wiki/%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
 
 
+**使用方法**
 
 ### 1、引入
 
 ```
-compile 'com.javen205.jpay:jpaysdk:0.0.1'
+compile 'com.javen205.jpay:jpaysdk:latest.release.here'
 ```
 
 ### 2. Android Manifest配置
@@ -39,14 +37,14 @@ compile 'com.javen205.jpay:jpaysdk:0.0.1'
 ```
  <!-- 微信支付 -->
         <activity
-            android:name="com.javen205.jpay.weixin.WxPayCallBackActivity"
+            android:name="com.javen205.jpay.weixin.WXPayEntryActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity-alias
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
-            android:targetActivity="com.javen205.jpay.weixin.WxPayCallBackActivity" />
+            android:targetActivity="com.javen205.jpay.weixin.WXPayEntryActivity" />
         <!-- 微信支付 end -->
 
 
@@ -205,7 +203,28 @@ Alipay.getInstance(mContext).startAliPay(orderInfo, new JPay.JPayListener() {
 #### 4.2 服务端使用说明
 
 1. 开源项目地址[weixin_guide](http://git.oschina.net/javen205/weixin_guide)
-2. 开源项目如何下载、如何导入到IDE 参考之前写的文章[微信公众号之项目导入](http://www.jianshu.com/p/ab209e163614)
+2. 开源项目如何下载、如何导入到IDE 参考之前写的文章[微信公众号之项目导入](http://blog.csdn.net/zyw_java/article/details/61415051)
 3. 微信支付服务端具体实现在`com.javen.weixin.controller.WeixinPayController.java` 类中的`appPay()`
 4. 支付宝支付服务端具体实现在`com.javen.alipay.AliPayController.java` 类中的`appPay()`
-5. 支付宝WAP支付详细介绍参考[支付宝Wap支付你了解多少？](http://www.jianshu.com/p/7656de831a2c)
+
+
+#### 4.3 参考资料
+
+微信、支付宝APP支付详细介绍参考资料 [博客地址](http://blog.csdn.net/zyw_java)
+
+
+[Android版-微信APP支付](http://blog.csdn.net/zyw_java/article/details/54024232)
+
+[Android版-支付宝APP支付](http://blog.csdn.net/zyw_java/article/details/54024238)
+
+[支付宝Wap支付你了解多少？](http://blog.csdn.net/zyw_java/article/details/54024253)
+
+**安利**
+
+[微信公众号开发：订阅号、服务号](http://git.oschina.net/javen205/weixin_guide)
+
+[AndroidStudio多渠道打包](http://blog.csdn.net/zyw_java/article/details/61420290)
+
+[Android依赖管理与私服搭建](http://blog.csdn.net/zyw_java/article/details/60336030)
+
+[Android Studio 上传aar(Library)到JCenter](http://blog.csdn.net/zyw_java/article/details/60336189)

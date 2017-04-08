@@ -5,7 +5,7 @@ apply plugin: 'maven'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 // 根节点添加
-version = "0.0.1"
+version = "0.0.2"
 // 根节点添加
 group = "com.javen205.jpay"
 
@@ -55,6 +55,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }
 
 

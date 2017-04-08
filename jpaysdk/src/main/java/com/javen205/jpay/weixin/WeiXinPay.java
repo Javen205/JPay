@@ -11,10 +11,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 import com.javen205.jpay.JPay.JPayListener;
-import com.tencent.mm.sdk.constants.Build;
-import com.tencent.mm.sdk.modelpay.PayReq;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.tencent.mm.opensdk.constants.Build;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.util.List;
 
@@ -79,6 +79,7 @@ public class WeiXinPay {
      */
     public void startWXPay(String appId,String partnerId,String prepayId,
                            String nonceStr,String timeStamp,String sign,JPayListener listener){
+        mJPayListener = listener;
         init(appId);
 
         if (!checkWx()) {
