@@ -7,6 +7,7 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/javendev/maven/JPay/images/download.svg)](https://bintray.com/javendev/maven/JPay/_latestVersion)
+[![QQ](http://pub.idqqimg.com/wpa/images/group.png)](https://jq.qq.com/?_wv=1027&k=47koFFR)
 
 [版本更新记录](https://github.com/Javen205/JPay/wiki/%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
 
@@ -212,7 +213,7 @@ Alipay.getInstance(mContext).startAliPay(orderInfo, new JPay.JPayListener() {
 
 微信、支付宝APP支付详细介绍参考资料 [博客地址](http://blog.csdn.net/zyw_java)
 
-
+[10分钟搭建属于自己的ngork服务器，实现内网穿透](http://blog.csdn.net/zyw_java/article/details/70341106)
 [Android版-微信APP支付](http://blog.csdn.net/zyw_java/article/details/54024232)
 
 [Android版-支付宝APP支付](http://blog.csdn.net/zyw_java/article/details/54024238)
