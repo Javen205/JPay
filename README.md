@@ -11,6 +11,7 @@
 
 
 GitHub:https://github.com/Javen205/JPay
+
 oschina:http://git.oschina.net/javen205/JPay
 
 [版本更新记录](https://github.com/Javen205/JPay/wiki/%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
