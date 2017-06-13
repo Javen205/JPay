@@ -9,6 +9,10 @@
 [![Download](https://api.bintray.com/packages/javendev/maven/JPay/images/download.svg)](https://bintray.com/javendev/maven/JPay/_latestVersion)
 [![QQ](http://pub.idqqimg.com/wpa/images/group.png)](https://jq.qq.com/?_wv=1027&k=47koFFR)
 
+
+GitHub:https://github.com/Javen205/JPay
+oschina:http://git.oschina.net/javen205/JPay
+
 [版本更新记录](https://github.com/Javen205/JPay/wiki/%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
 
 
