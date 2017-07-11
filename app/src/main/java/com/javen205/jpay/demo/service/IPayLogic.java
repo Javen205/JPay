@@ -3,7 +3,7 @@ package com.javen205.jpay.demo.service;
 import android.app.Activity;
 import android.widget.Toast;
 
-import com.javen205.jpay.JPay;
+import com.jpay.JPay;
 import com.javen205.jpay.demo.entity.Order;
 import com.javen205.jpay.demo.utils.Constants;
 import com.javen205.jpay.demo.utils.HttpKit;
@@ -82,23 +82,6 @@ public class IPayLogic {
 				Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
 			}
 		});
-
-		/*Alipay.getInstance(mContext).startAliPay(orderInfo, new JPay.JPayListener() {
-			@Override
-			public void onPaySuccess() {
-
-			}
-
-			@Override
-			public void onPayError(int error_code, String message) {
-
-			}
-
-			@Override
-			public void onPayCancel() {
-
-			}
-		});*/
 	 }
 
 
