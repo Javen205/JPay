@@ -22,7 +22,7 @@ oschina:http://git.oschina.net/javen205/JPay
 ### 1、引入
 
 ```
-compile 'com.javen205.jpay:jpaysdk:latest.release.here'
+compile 'com.jpay:jpaysdk:latest.release.here'
 ```
 
 ### 2. Android Manifest配置
@@ -43,7 +43,7 @@ compile 'com.javen205.jpay:jpaysdk:latest.release.here'
 ```
  <!-- 微信支付 -->
         <activity
-            android:name="com.javen205.jpay.weixin.WXPayEntryActivity"
+            android:name="com.jpay.weixin.WXPayEntryActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
