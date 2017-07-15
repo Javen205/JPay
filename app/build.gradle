@@ -13,16 +13,16 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("wxkey")
-            storePassword '123456'
-            keyAlias '1'
-            keyPassword '123456'
+            storeFile file("wxkey.jks")
+            storePassword 'javen.zhou'
+            keyAlias 'javen'
+            keyPassword 'javen.zhou'
         }
         debugConfig {
-            storeFile file("wxkey")
-            storePassword "123456"
-            keyAlias "1"
-            keyPassword "123456"
+            storeFile file("wxkey.jks")
+            storePassword 'javen.zhou'
+            keyAlias 'javen'
+            keyPassword 'javen.zhou'
         }
     }
 
@@ -69,5 +69,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
     //    compile 'com.javen205.jpay:jpaysdk:0.0.2'
-    compile project(':jpaylib')
+    compile project(':jpaysdk')
 }

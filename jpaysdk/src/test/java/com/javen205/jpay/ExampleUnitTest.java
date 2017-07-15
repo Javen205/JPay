@@ -1,4 +1,4 @@
-package com.javen205.jpay;
+package com.jpay;
 
 import org.junit.Test;
 

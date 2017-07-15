@@ -5,9 +5,9 @@ apply plugin: 'maven'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 // 根节点添加
-version = "0.0.2"
+version = "0.0.3"
 // 根节点添加
-group = "com.javen205.jpay"
+group = "com.jpay"
 
 
 android {

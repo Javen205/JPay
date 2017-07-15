@@ -1,4 +1,4 @@
-package com.javen205.jpay;
+package com.jpay;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.javen205.jpay.test", appContext.getPackageName());
+        assertEquals("com.jpay.test", appContext.getPackageName());
     }
 }

@@ -8,4 +8,4 @@
 /build
 /captures
 .externalNativeBuild
-/app/wxkey
+/app/wxkey*
