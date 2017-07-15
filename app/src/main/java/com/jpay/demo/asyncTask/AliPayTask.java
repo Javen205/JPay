@@ -1,12 +1,12 @@
-package com.javen205.jpay.demo.asyncTask;
+package com.jpay.demo.asyncTask;
 
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.javen205.jpay.demo.entity.Order;
-import com.javen205.jpay.demo.service.IPayLogic;
+import com.jpay.demo.entity.Order;
+import com.jpay.demo.service.IPayLogic;
 
 import org.json.JSONObject;
 
@@ -19,7 +19,11 @@ public class AliPayTask extends AsyncTask<Object, Integer, String> {
 	
 	@Override
 	protected String doInBackground(Object... params) {
-		return  IPayLogic.getIntance(mContext).getAliPayOrderInfo((Order)params[0]);
+		try{
+			return  IPayLogic.getIntance(mContext).getAliPayOrderInfo((Order)params[0]);
+		}catch (Exception e){
+		}
+		return null;
 	}
 	
 	@Override

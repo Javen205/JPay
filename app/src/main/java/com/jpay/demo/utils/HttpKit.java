@@ -1,5 +1,5 @@
 
-package com.javen205.jpay.demo.utils;
+package com.jpay.demo.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

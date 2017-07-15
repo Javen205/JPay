@@ -1,4 +1,4 @@
-package com.javen205.jpay.demo.entity;
+package com.jpay.demo.entity;
 
 public class Order {
 	private String appId;

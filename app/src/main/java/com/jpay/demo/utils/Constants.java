@@ -1,4 +1,4 @@
-package com.javen205.jpay.demo.utils;
+package com.jpay.demo.utils;
 
 public class Constants {
 	public static final String WXPAY_URL="http://192.168.1.100:8080/pay/appPay";

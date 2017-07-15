@@ -1,12 +1,12 @@
-package com.javen205.jpay.demo.service;
+package com.jpay.demo.service;
 
 import android.app.Activity;
 import android.widget.Toast;
 
 import com.jpay.JPay;
-import com.javen205.jpay.demo.entity.Order;
-import com.javen205.jpay.demo.utils.Constants;
-import com.javen205.jpay.demo.utils.HttpKit;
+import com.jpay.demo.entity.Order;
+import com.jpay.demo.utils.Constants;
+import com.jpay.demo.utils.HttpKit;
 
 import java.util.HashMap;
 import java.util.Map;

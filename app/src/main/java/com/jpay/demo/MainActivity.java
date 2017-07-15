@@ -1,4 +1,4 @@
-package com.javen205.jpay.demo;
+package com.jpay.demo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.javen205.jpay.demo.asyncTask.AliPayTask;
-import com.javen205.jpay.demo.asyncTask.WXPayTask;
-import com.javen205.jpay.demo.entity.Order;
+import com.jpay.demo.asyncTask.AliPayTask;
+import com.jpay.demo.asyncTask.WXPayTask;
+import com.jpay.demo.entity.Order;
 
 import mayihuijia.com.R;
 
