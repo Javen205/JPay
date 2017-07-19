@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.alipay.sdk.app.EnvUtils;
 import com.jpay.demo.asyncTask.AliPayTask;
 import com.jpay.demo.asyncTask.WXPayTask;
 import com.jpay.demo.entity.Order;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_main);
+        //支付宝APP支付可以使用沙箱环境测试 https://openhome.alipay.com/platform/appDaily.htm?tab=tool
+        EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
     }
 
     public void testWxPay(View view){

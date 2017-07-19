@@ -50,7 +50,7 @@ compile 'com.jpay:jpaysdk:latest.release.here'
         <activity-alias
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
-            android:targetActivity="com.javen205.jpay.weixin.WXPayEntryActivity" />
+            android:targetActivity="com.jpay.weixin.WXPayEntryActivity" />
         <!-- 微信支付 end -->
 
 
