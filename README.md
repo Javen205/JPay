@@ -7,6 +7,7 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/javendev/maven/JPay/images/download.svg)](https://bintray.com/javendev/maven/JPay/_latestVersion)
+[![](https://jitpack.io/v/javen205/JPay.svg)](https://jitpack.io/#javen205/JPay)
 [![QQ](http://pub.idqqimg.com/wpa/images/group.png)](https://jq.qq.com/?_wv=1027&k=47koFFR)
 
 
@@ -19,12 +20,25 @@ oschina:http://git.oschina.net/javen205/JPay
 
 **使用方法**
 
-### 1、引入
+### 1、坐标
 
 ```
 compile 'com.jpay:jpaysdk:latest.release.here'
 ```
-
+或者
+Step 1. Add it in your root build.gradle at the end of repositories:
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+Step 2. Add the dependency
+```
+compile 'com.github.javen205.JPay:jpaylib:0.0.3'
+```
 ### 2. Android Manifest配置
 
 ##### 2.1权限声明
