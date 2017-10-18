@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.text.TextUtils;
 
 import com.jpay.alipay.Alipay;
+import com.jpay.unionpay.UPPay;
 import com.jpay.weixin.WeiXinPay;
 
 import org.json.JSONException;
@@ -32,16 +33,16 @@ public class JPay {
     public interface JPayListener {
         //支付成功
         void onPaySuccess();
-
         //支付失败
         void onPayError(int error_code, String message);
-
         //支付取消
         void onPayCancel();
+        //银联支付结果回调
+        void onUUPay(String dataOrg, String sign, String mode);
     }
 
     public enum PayMode {
-        WXPAY, ALIPAY,
+        WXPAY, ALIPAY, UUPAY
     }
 
     public void toPay(PayMode payMode, String payParameters, JPayListener listener) {
@@ -49,6 +50,8 @@ public class JPay {
             toWxPay(payParameters, listener);
         } else if (payMode.name().equalsIgnoreCase(PayMode.ALIPAY.name())) {
             toAliPay(payParameters, listener);
+        } else if (payMode.name().equalsIgnoreCase(PayMode.UUPAY.name())) {
+            toUUPay(payParameters,listener);
         }
     }
 
@@ -73,7 +76,7 @@ public class JPay {
                 }
                 return;
             }
-            WeiXinPay.getInstance(mContext).startWXPay(param.optString("appId"),
+            toWxPay(param.optString("appId"),
                     param.optString("partnerId"), param.optString("prepayId"),
                     param.optString("nonceStr"), param.optString("timeStamp"),
                     param.optString("sign"), listener);
@@ -108,5 +111,47 @@ public class JPay {
                 listener.onPayError(Alipay.PAY_PARAMETERS_ERROE, "参数异常");
             }
         }
+    }
+
+    public void toUUPay(String payParameters, JPayListener listener) {
+        if (payParameters != null) {
+            JSONObject param = null;
+            try {
+                param = new JSONObject(payParameters);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                if (listener != null) {
+                    listener.onPayError(UPPay.PAY_PARAMETERS_ERROE, "参数异常");
+                }
+                return;
+            }
+            if (TextUtils.isEmpty(param.optString("mode")) || TextUtils.isEmpty(param.optString("tn"))){
+                if (listener != null) {
+                    listener.onPayError(UPPay.PAY_PARAMETERS_ERROE, "参数异常");
+                }
+                return;
+            }
+            toUUPay(param.optString("mode"),
+                    param.optString("tn"), listener);
+        } else {
+            if (listener != null) {
+                listener.onPayError(WeiXinPay.PAY_PARAMETERS_ERROE, "参数异常");
+            }
+        }
+    }
+
+    public void toUUPay(String mode, String tn, JPayListener listener) {
+        if (listener == null) {
+            listener.onPayError(UPPay.PAY_PARAMETERS_ERROE, "参数异常");
+            return;
+        }
+        if (TextUtils.isEmpty(mode)) {
+            mode = "00";
+        }
+        if (TextUtils.isEmpty(tn)) {
+            listener.onPayError(UPPay.PAY_PARAMETERS_ERROE, "参数异常");
+            return;
+        }
+        UPPay.getInstance(mContext).startUPPay(mode, tn, listener);
     }
 }

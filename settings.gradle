@@ -1,1 +1,1 @@
-include ':app', ':jpaysdk', ':jpaylib'
+include ':app', ':jpaysdk'
