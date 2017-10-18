@@ -2,18 +2,18 @@
 
 # JPay
 
-对微信App支付、支付宝App支付的二次封装,对外提供一个相对简单的接口以及支付结果的回调
+对微信App支付、支付宝App支付、银联App支付的二次封装,对外提供一个相对简单的接口以及支付结果的回调
 
 
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Download](https://api.bintray.com/packages/javendev/maven/JPay/images/download.svg)](https://bintray.com/javendev/maven/JPay/_latestVersion)
 [![](https://jitpack.io/v/javen205/JPay.svg)](https://jitpack.io/#javen205/JPay)
-[![QQ](http://pub.idqqimg.com/wpa/images/group.png)](https://jq.qq.com/?_wv=1027&k=47koFFR)
+[![IJPay Author](https://img.shields.io/badge/IJPay%20Author-Javen-ff69b4.svg)](http://blog.csdn.net/zyw_java)
+
 
 
 GitHub:https://github.com/Javen205/JPay
 
-oschina:http://git.oschina.net/javen205/JPay
+Gitee:http://gitee.com/Javen205/JPay
 
 [版本更新记录](https://github.com/Javen205/JPay/wiki/%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95)
 
@@ -22,10 +22,6 @@ oschina:http://git.oschina.net/javen205/JPay
 
 ### 1、坐标
 
-```
-compile 'com.jpay:jpaysdk:latest.release.here'
-```
-或者
 Step 1. Add it in your root build.gradle at the end of repositories:
 ```
 	allprojects {
@@ -36,8 +32,9 @@ Step 1. Add it in your root build.gradle at the end of repositories:
 	}
 ```
 Step 2. Add the dependency
+
 ```
-compile 'com.github.javen205.JPay:jpaylib:0.0.3'
+compile 'com.github.javen205.JPay:jpaysdk:latest.release.here'
 ```
 ### 2. Android Manifest配置
 
@@ -49,6 +46,11 @@ compile 'com.github.javen205.JPay:jpaylib:0.0.3'
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+<uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+<uses-permission android:name="android.permission.NFC" />
+<uses-feature android:name="android.hardware.nfc.hce"/>
 ```
 
 ##### 2.2注册activity
@@ -68,7 +70,7 @@ compile 'com.github.javen205.JPay:jpaylib:0.0.3'
         <!-- 微信支付 end -->
 
 
-        <!-- alipay sdk begin -->
+        <!-- 支付宝支付 -->
 
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
@@ -85,7 +87,23 @@ compile 'com.github.javen205.JPay:jpaylib:0.0.3'
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
 
-        <!-- alipay sdk end -->
+        <!-- 支付宝支付 end -->
+
+         <!-- 银联支付 -->
+                <uses-library android:name="org.simalliance.openmobileapi" android:required="false"/>
+                <activity
+                    android:name="com.unionpay.uppay.PayActivity"
+                    android:screenOrientation="portrait"
+                    android:configChanges="orientation|keyboardHidden"
+                    android:excludeFromRecents="true"
+                    android:windowSoftInputMode="adjustResize"/>
+                <activity
+                    android:name="com.unionpay.UPPayWapActivity"
+                    android:configChanges="orientation|keyboardHidden|fontScale"
+                    android:screenOrientation="portrait"
+                    android:windowSoftInputMode="adjustResize" >
+                </activity>
+                <!-- 银联支付 end -->
 ```
 
 ### 3. 发起支付
@@ -185,6 +203,53 @@ Alipay.getInstance(mContext).startAliPay(orderInfo, new JPay.JPayListener() {
 		});
 ```
 
+##### 3.3 银联支付
+
+步骤一 调起银联手机控件支付
+
+```
+JPay.getIntance(mContext).toUUPay("01",tn, new JPay.JPayListener() {
+            @Override
+            public void onPaySuccess() {
+                Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPayError(int error_code, String message) {
+                Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPayCancel() {
+                Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onUUPay(String dataOrg, String sign, String mode) {
+                Toast.makeText(mContext, "支付成功>需要后台查询订单确认>"+dataOrg+" "+mode, Toast.LENGTH_SHORT).show();
+            }
+        });
+```
+
+>说明
+第一个参数`mode` "00" - 启动银联正式环境 "01" - 连接银联测试环境
+第二个参数`tn` 后台获取下单交易的流水号
+第三方参数是`JPay` 封装的客户端结果的回调,需要在`onUUPay`中自行去后台查询订单的最终支付状态
+
+步骤二 设置回调
+
+```
+@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        try {
+            UPPay.getInstance(this).onUUPayResult(data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+```
+
 ### 4.案例的使用
 
 
@@ -220,12 +285,10 @@ Alipay.getInstance(mContext).startAliPay(orderInfo, new JPay.JPayListener() {
 
 
 
-#### 4.2 服务端使用说明
+#### 4.2 服务端
 
-1. 开源项目地址[weixin_guide](http://git.oschina.net/javen205/weixin_guide)
-2. 开源项目如何下载、如何导入到IDE 参考之前写的文章[微信公众号之项目导入](http://blog.csdn.net/zyw_java/article/details/61415051)
-3. 微信支付服务端具体实现在`com.javen.weixin.controller.WeixinPayController.java` 类中的`appPay()`
-4. 支付宝支付服务端具体实现在`com.javen.alipay.AliPayController.java` 类中的`appPay()`
+开源项目地址[IJPay](https://github.com/javen205/IJPay)
+
 
 
 #### 4.3 参考资料

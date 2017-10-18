@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 //启用Jitpack 插件
 apply plugin: 'com.github.dcendents.android-maven'
 // 根节点添加
-version = "0.6"
+version = "0.0.4"
 // 根节点添加
 group = "com.github.javen205"
 
