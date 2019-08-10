@@ -5,9 +5,11 @@
 <p align="center">
 	<strong> JPay 简易而不简单的支付 SDK </strong>
 </p>
+
 <p align="center">
-	<strong>对微信App支付、支付宝App支付、银联App支付的二次封装,对外提供一个相对简单的接口以及支付结果的回调<strong>
+	<strong>对微信App支付、支付宝App支付、银联App支付的二次封装,对外提供一个相对简单的接口以及支付结果的回调</strong>
 </p>
+
 
 <p align="center">
     <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-green.svg" alt="License" /></a>
