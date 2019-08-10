@@ -13,7 +13,7 @@
 
 <p align="center">
     <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-green.svg" alt="License" /></a>
-    <a href="https://jitpack.io/#javen205/JPay"><img src="https://jitpack.io/v/javen205/JPay.svg" alt="" /></a>
+    <a href="https://jitpack.io/#javen205/JPay"><img src="https://jitpack.io/v/Javen205/JPay.svg" alt="" /></a>
     <a href="http://javen.blog.csdn.net"><img src="https://img.shields.io/badge/JPay%20OR%20IJPay%20Author-Javen-ff69b4.svg" alt="JPay Author" /></a>
 </p>
 
