@@ -40,28 +40,25 @@
 
 Step 1. Add it in your root build.gradle at the end of repositories:
 ```
-	allprojects {
-		repositories {
-			...
-			flatDir {
-                dirs 'libs'
-            }
-            // 如果有使用支付宝支付
-            flatDir {
-                dirs project(':AliPay').file('libs')
-            }
-			maven { url 'https://jitpack.io' }
-		}
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 Step 2. Add the dependency
 
 ```
-implementation 'com.github.javen205:JPay:latest.release.here'
+implementation 'com.github.javen205:JPay:AliPay:latest.release.here'
+implementation 'com.github.javen205:JPay:WxPay:latest.release.here'
 ```
+
 例如：版本号为`0.0.5`
+
 ```
-implementation 'com.github.javen205:JPay:0.0.5'
+implementation 'com.github.javen205.JPay:AliPay:0.0.5'
+implementation 'com.github.javen205.JPay:WxPay:0.0.5'
 ```
 ### 2. Android Manifest配置
 
