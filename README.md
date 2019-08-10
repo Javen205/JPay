@@ -1,8 +1,13 @@
-
-
 # JPay
 
-对微信App支付、支付宝App支付、银联App支付的二次封装,对外提供一个相对简单的接口以及支付结果的回调
+<p align="center">
+	<a target="_blank" href="https://javen205.github.io"><img src="assets/img/JPay.png"></a>
+</p>
+
+<p align="center">
+	<strong> JPay 简易而不简单的支付 SDK </strong>
+	<strong>对微信App支付、支付宝App支付、银联App支付的二次封装,对外提供一个相对简单的接口以及支付结果的回调<strong>
+</p>
 
 <p align="center">
     <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-green.svg" alt="License" /></a>
@@ -11,11 +16,10 @@
 </p>
 
 
+# 客户端与服务端
+
 - GitHub: https://github.com/Javen205/JPay
 - Gitee: http://gitee.com/Javen205/JPay
-
-
-# 服务端
 
 - GitHub: https://github.com/Javen205/IJPay
 - Gitee: http://gitee.com/Javen205/IJPay
@@ -53,7 +57,7 @@ Step 2. Add the dependency
 ```
 implementation 'com.github.javen205:JPay:latest.release.here'
 ```
-例如：版本号为`0.0.4`
+例如：版本号为`0.0.5`
 ```
 implementation 'com.github.javen205:JPay:0.0.5'
 ```
