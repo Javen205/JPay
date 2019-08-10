@@ -1,11 +1,11 @@
-# JPay
-
 <p align="center">
-	<a target="_blank" href="https://javen205.github.io"><img src="assets/img/JPay.png"></a>
+	<a target="_blank" href="https://javen205.github.io"><img src="assets/img/JPay.png" width="410"></a>
 </p>
 
 <p align="center">
 	<strong> JPay 简易而不简单的支付 SDK </strong>
+</p>
+<p align="center">
 	<strong>对微信App支付、支付宝App支付、银联App支付的二次封装,对外提供一个相对简单的接口以及支付结果的回调<strong>
 </p>
 
