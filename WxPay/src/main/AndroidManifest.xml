@@ -1,2 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jpay.wxpay" />
+    package="com.jpay.wxpay">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application>
+        <!-- 微信支付 -->
+        <activity
+            android:name="com.jpay.wxpay.WXPayEntryActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity-alias
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.jpay.wxpay.WXPayEntryActivity" />
+        <!-- 微信支付 end -->
+    </application>
+</manifest>
