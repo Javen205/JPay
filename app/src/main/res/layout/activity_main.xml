@@ -36,6 +36,6 @@
         android:text="银联支付测试"
         android:layout_below="@+id/alipay"
         android:layout_centerInParent="true"
-        android:onClick="testUPPPay"/>
+        android:onClick="testUnionPay"/>
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.jpay.service;
 
 import android.app.Activity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.jpay.Constants;
@@ -51,7 +52,7 @@ public class IPayLogic {
         queryParas.put("notify_url", notify_url);
         queryParas.put("device_info", device_info);
 
-        String result = HttpKit.get(Constants.WXPAY_URL, queryParas);
+        String result = HttpKit.get(Constants.WX_PAY_URL, queryParas);
         return result;
     }
 
@@ -61,7 +62,7 @@ public class IPayLogic {
      * @return
      */
     public String getAliPayOrderInfo(Order order) {
-        String result = HttpKit.get(Constants.ALIPAY_URL);
+        String result = HttpKit.get(Constants.ALI_PAY_URL);
         return result;
     }
 
@@ -71,8 +72,8 @@ public class IPayLogic {
      * @param order
      * @return
      */
-    public String getUPPayOrderInfo(Order order) {
-        String result = HttpKit.get(Constants.UPPAY_URL);
+    public String getUnionPayOrderInfo(Order order) {
+        String result = HttpKit.get(Constants.UNION_PAY_URL);
         return result;
     }
 
@@ -124,6 +125,31 @@ public class IPayLogic {
             @Override
             public void onPayCancel() {
                 Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void startUnionPay(String tn) {
+        com.jpay.unionpay.JPay.getIntance(mContext).toUnionPay("01", tn, new com.jpay.unionpay.JPay.UnionPayListener() {
+            @Override
+            public void onPaySuccess() {
+                Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPayError(int error_code, String message) {
+                Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPayCancel() {
+                Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onUnionPay(String dataOrg, String sign, String mode) {
+                Log.d("onUnionPay", "支付成功>需要后台查询订单确认>dataOrg" + dataOrg + " sign>" + sign + " mode>" + mode);
+                Toast.makeText(mContext, "支付成功>需要后台查询订单确认>" + dataOrg + " " + mode, Toast.LENGTH_SHORT).show();
             }
         });
     }

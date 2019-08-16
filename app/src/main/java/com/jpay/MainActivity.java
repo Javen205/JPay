@@ -1,15 +1,21 @@
 package com.jpay;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.EnvUtils;
 import com.jpay.asyncTask.AliPayTask;
+import com.jpay.asyncTask.UnionPayTask;
 import com.jpay.asyncTask.WXPayTask;
 import com.jpay.entity.Order;
+import com.jpay.unionpay.UnionPay;
+
+import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,5 +59,31 @@ public class MainActivity extends AppCompatActivity {
         order.setNofityUrl("http://www.xxxx.com");//支付成功服务端回调通知的地址
 
         new AliPayTask(this).execute(order);
+    }
+
+
+    public void testUnionPay(View view){
+        Toast.makeText(this, "银联测试", Toast.LENGTH_SHORT).show();
+
+        Order order = new Order();
+        order.setBody("会员充值中心");
+        order.setParaTradeNo(System.currentTimeMillis()+"");
+        order.setTotalFee(20);
+        order.setAttach("json");//附加参数
+        order.setNofityUrl("http://www.xxxx.com");//支付成功服务端回调通知的地址
+
+        new UnionPayTask(this).execute(order);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.e("UnionPay",requestCode+" "+resultCode);
+        try {
+            UnionPay.getInstance(this).onUnionPayResult(data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
