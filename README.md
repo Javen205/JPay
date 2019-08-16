@@ -13,7 +13,7 @@
 
 <p align="center">
     <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-green.svg" alt="License" /></a>
-    <a href="https://jitpack.io/#javen205/JPay"><img src="https://jitpack.io/v/Javen205/JPay.svg" alt="" /></a>
+    <a href="https://jitpack.io/#javen205/JPay"><img src="https://jitpack.io/v/javen205/JPay.svg" alt="" /></a>
     <a href="http://javen.blog.csdn.net"><img src="https://img.shields.io/badge/JPay%20OR%20IJPay%20Author-Javen-ff69b4.svg" alt="JPay Author" /></a>
 </p>
 
@@ -65,34 +65,14 @@ implementation 'com.github.javen205.JPay:WxPay:0.0.5'
 ##### 2.1 权限声明
 
 ```
- <!-- 支付宝支付必须-->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
- <!-- 支付宝支付必须-->
- <!-- 微信支付必须-->
-    <uses-permission android:name="android.permission.INTERNET"/>
- <!-- 微信支付必须-->
+ // 最新版本无需特殊配置，已配置到 Library 
 ```
 
 ##### 2.2 注册activity
 
 `application` 节点添加如下类容
 ```
-        <!-- 微信支付 -->
-        <activity
-            android:name="com.jpay.weixin.WXPayEntryActivity"
-            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity-alias
-            android:name=".wxapi.WXPayEntryActivity"
-            android:exported="true"
-            android:targetActivity="com.jpay.weixin.WXPayEntryActivity" />
-        <!-- 微信支付 end -->
-
-
-        <!-- 支付宝支付使用了 aar 包则如需额外配置-->
+// 最新版本无需特殊配置，已配置到 Library 
 ```
 
 ### 3. 发起支付
@@ -102,43 +82,42 @@ implementation 'com.github.javen205.JPay:WxPay:0.0.5'
 
 ```
 com.jpay.wxpay.JPay.getIntance(mContext).toWxPay(appId, partnerId, prepayId, nonceStr, timeStamp, sign, new com.jpay.wxpay.JPay.WxPayListener() {
-            @Override
-            public void onPaySuccess() {
-                Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
-            }
+    @Override
+    public void onPaySuccess() {
+        Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+    }
 
-            @Override
-            public void onPayError(int error_code, String message) {
-                Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
-            }
+    @Override
+    public void onPayError(int error_code, String message) {
+        Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
+    }
 
-            @Override
-            public void onPayCancel() {
-                Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
-            }
-        });
+    @Override
+    public void onPayCancel() {
+        Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+    }
+});
 ```
 
 或者
 
 ```
 com.jpay.wxpay.JPay.getIntance(mContext).toWxPay(payParameters, new com.jpay.wxpay.JPay.WxPayListener() {
-            @Override
-            public void onPaySuccess() {
-                Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
-            }
+    @Override
+    public void onPaySuccess() {
+        Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+    }
 
-            @Override
-            public void onPayError(int error_code, String message) {
-                Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
-            }
+    @Override
+    public void onPayError(int error_code, String message) {
+        Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
+    }
 
-            @Override
-            public void onPayCancel() {
-                Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+    @Override
+    public void onPayCancel() {
+        Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+    }
+});
 ``` 
 
 `payParameters` 为JSON字符串格式如下：
@@ -157,43 +136,83 @@ com.jpay.wxpay.JPay.getIntance(mContext).toWxPay(payParameters, new com.jpay.wxp
 
 ```
 JPay.getIntance(mContext).toWxPay(appId, partnerId, prepayId, nonceStr, timeStamp, sign, new JPay.JPayListener() {
-			@Override
-			public void onPaySuccess() {
-				Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
-			}
+    @Override
+    public void onPaySuccess() {
+        Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+    }
 
-			@Override
-			public void onPayError(int error_code, String message) {
-				Toast.makeText(mContext, "支付失败>"+error_code+" "+ message, Toast.LENGTH_SHORT).show();
-			}
+    @Override
+    public void onPayError(int error_code, String message) {
+        Toast.makeText(mContext, "支付失败>"+error_code+" "+ message, Toast.LENGTH_SHORT).show();
+    }
 
-			@Override
-			public void onPayCancel() {
-				Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
-			}
-		});
+    @Override
+    public void onPayCancel() {
+        Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+    }
+});
 ```
 ##### 3.2 支付宝支付
 
 ```
 JPay.getIntance(mContext).toAliPay(orderInfo, new JPay.AliPayListener() {
-            @Override
-            public void onPaySuccess() {
-                Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
-            }
+    @Override
+    public void onPaySuccess() {
+        Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+    }
 
-            @Override
-            public void onPayError(int error_code, String message) {
-                Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
-            }
+    @Override
+    public void onPayError(int error_code, String message) {
+        Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
+    }
 
-            @Override
-            public void onPayCancel() {
-                Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
-            }
-        });
+    @Override
+    public void onPayCancel() {
+        Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+    }
+});
+```
+##### 3.3 银联支付
+
+```
+com.jpay.unionpay.JPay.getIntance(mContext).toUnionPay("01", tn, new com.jpay.unionpay.JPay.UnionPayListener() {
+    @Override
+    public void onPaySuccess() {
+        Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPayError(int error_code, String message) {
+        Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPayCancel() {
+        Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onUnionPay(String dataOrg, String sign, String mode) {
+        Log.d("onUnionPay", "支付成功>需要后台查询订单确认>dataOrg" + dataOrg + " sign>" + sign + " mode>" + mode);
+        Toast.makeText(mContext, "支付成功>需要后台查询订单确认>" + dataOrg + " " + mode, Toast.LENGTH_SHORT).show();
+    }
+});
 ```
 
+Activity 中 重写 onActivityResult 监听回调
+
+```
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    Log.e("UnionPay",requestCode+" "+resultCode);
+    try {
+        UnionPay.getInstance(this).onUnionPayResult(data);
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+    super.onActivityResult(requestCode, resultCode, data);
+}
+```
 
 ### 4.案例的使用
 
@@ -209,24 +228,24 @@ JPay.getIntance(mContext).toAliPay(orderInfo, new JPay.AliPayListener() {
 > 将key复制到项目的根目录(app)中并修改 `buildTypes` 配置如下
 
 ```
- signingConfigs {
-        release {
-            storeFile file("wxkey")
-            storePassword '123456'
-            keyAlias '1'
-            keyPassword '123456'
-        }
+signingConfigs {
+    release {
+        storeFile file("wxkey")
+        storePassword '123456'
+        keyAlias '1'
+        keyPassword '123456'
     }
+}
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            signingConfig signingConfigs.release
-        }
+buildTypes {
+    release {
+        minifyEnabled false
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+    debug {
+        signingConfig signingConfigs.release
+    }
+}
 ```
 
 
