@@ -3,6 +3,7 @@ package com.jpay.unionpay;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,7 +69,7 @@ public class JPay {
 
     public void toUnionPay(String mode, String tn, UnionPayListener listener) {
         if (listener == null) {
-            listener.onPayError(UnionPay.PAY_PARAMETERS_ERROE, "参数异常");
+            Log.e("UnionPay", "参数异常");
             return;
         }
         if (TextUtils.isEmpty(mode)) {
