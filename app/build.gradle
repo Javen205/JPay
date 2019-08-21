@@ -28,4 +28,6 @@ dependencies {
     implementation project(':AliPay')
     implementation project(':WxPay')
     implementation project(':UnionPay')
+    implementation project(':JDPay')
+
 }

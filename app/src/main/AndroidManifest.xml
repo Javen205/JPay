@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.jpay">
 
     <application
+        tools:replace="android:allowBackup"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,6 +17,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--京东支付必须-->
+        <activity
+            android:name="com.jdpaysdk.author.AuthorActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!--jdpauth是固定的后面的数字是appId-->
+                <!--此处的123456789测试使用的，如果用户已经注册需要使用自己注册的appId-->
+                <data android:scheme="jdpauth7ad8a3d997994f6c26efee6cb2d27cdb">
+                </data>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.jdpaysdk.author.browser.BrowserActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <!--京东支付必须 END-->
     </application>
 
 </manifest>

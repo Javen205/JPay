@@ -38,4 +38,13 @@
         android:layout_centerInParent="true"
         android:onClick="testUnionPay"/>
 
+    <Button
+        android:id="@+id/JDPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="京东支付测试"
+        android:layout_below="@+id/uppay"
+        android:layout_centerInParent="true"
+        android:onClick="testJDPay"/>
+
 </RelativeLayout>

@@ -73,8 +73,11 @@ public class IPayLogic {
      * @return
      */
     public String getUnionPayOrderInfo(Order order) {
-        String result = HttpKit.get(Constants.UNION_PAY_URL);
-        return result;
+        return HttpKit.get(Constants.UNION_PAY_URL);
+    }
+
+    public String getJDOrderInfo() {
+        return HttpKit.get(Constants.JD_PAY_URL);
     }
 
 
@@ -150,6 +153,32 @@ public class IPayLogic {
             public void onUnionPay(String dataOrg, String sign, String mode) {
                 Log.d("onUnionPay", "支付成功>需要后台查询订单确认>dataOrg" + dataOrg + " sign>" + sign + " mode>" + mode);
                 Toast.makeText(mContext, "支付成功>需要后台查询订单确认>" + dataOrg + " " + mode, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void JDAuthor(String orderId, String merchant,String appId,String signData,String extraInfo){
+        com.jpay.jdpay.JDPay.getInstance(mContext).author(orderId,merchant,appId,signData,extraInfo, new com.jpay.jdpay.JPay.JDPayListener(){
+
+            @Override
+            public void onPaySuccess() {
+                Toast.makeText(mContext, "支付成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPayError(String error_code, String message) {
+                Toast.makeText(mContext, "支付失败>" + error_code + " " + message, Toast.LENGTH_SHORT).show();
+                Log.d("onJDPay","支付失败，错误码>" + error_code);
+            }
+
+            @Override
+            public void onPayCancel() {
+                Toast.makeText(mContext, "取消了支付", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onJdPay(String dataOrg) {
+                Log.d("onJDPay", "支付结果 dataOrg>" + dataOrg);
             }
         });
     }

@@ -10,9 +10,11 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.EnvUtils;
 import com.jpay.asyncTask.AliPayTask;
+import com.jpay.asyncTask.JDPayTask;
 import com.jpay.asyncTask.UnionPayTask;
 import com.jpay.asyncTask.WXPayTask;
 import com.jpay.entity.Order;
+import com.jpay.jdpay.JDPay;
 import com.jpay.unionpay.UnionPay;
 
 import org.json.JSONException;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -34,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
         EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
     }
 
-    public void testWxPay(View view){
+    public void testWxPay(View view) {
         Toast.makeText(this, "测试", Toast.LENGTH_SHORT).show();
 
         Order order = new Order();
         order.setBody("会员充值中心");
-        order.setParaTradeNo(System.currentTimeMillis()+"");
+        order.setParaTradeNo(System.currentTimeMillis() + "");
         order.setTotalFee(20);
         order.setAttach("json");//附加参数
         order.setNofityUrl("http://www.baidu.com");//支付成功服务端回调通知的地址
@@ -48,12 +50,12 @@ public class MainActivity extends AppCompatActivity {
         new WXPayTask(this).execute(order);
     }
 
-    public void testAliPay(View view){
+    public void testAliPay(View view) {
         Toast.makeText(this, "支付宝测试", Toast.LENGTH_SHORT).show();
 
         Order order = new Order();
         order.setBody("会员充值中心");
-        order.setParaTradeNo(System.currentTimeMillis()+"");
+        order.setParaTradeNo(System.currentTimeMillis() + "");
         order.setTotalFee(20);
         order.setAttach("json");//附加参数
         order.setNofityUrl("http://www.xxxx.com");//支付成功服务端回调通知的地址
@@ -62,12 +64,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void testUnionPay(View view){
+    public void testUnionPay(View view) {
         Toast.makeText(this, "银联测试", Toast.LENGTH_SHORT).show();
 
         Order order = new Order();
         order.setBody("会员充值中心");
-        order.setParaTradeNo(System.currentTimeMillis()+"");
+        order.setParaTradeNo(System.currentTimeMillis() + "");
         order.setTotalFee(20);
         order.setAttach("json");//附加参数
         order.setNofityUrl("http://www.xxxx.com");//支付成功服务端回调通知的地址
@@ -75,12 +77,25 @@ public class MainActivity extends AppCompatActivity {
         new UnionPayTask(this).execute(order);
     }
 
+    public void testJDPay(View view) {
+        Toast.makeText(this, "JDPay测试", Toast.LENGTH_SHORT).show();
+        new JDPayTask(this).execute();
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.e("UnionPay",requestCode+" "+resultCode);
         try {
-            UnionPay.getInstance(this).onUnionPayResult(data);
+            Log.e("支付回调>>", requestCode + " " + resultCode);
+            if (data != null) {
+                if (com.jdpaysdk.author.Constants.PAY_RESPONSE_CODE == resultCode) {//返回信息接收
+                    JDPay.getInstance(this).onJDPayResult(data);
+                } else {
+                    UnionPay.getInstance(this).onUnionPayResult(data);
+                }
+            } else {
+                Toast.makeText(MainActivity.this, "返回为NULL", Toast.LENGTH_SHORT).show();
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
