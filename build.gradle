@@ -23,6 +23,9 @@ allprojects {
         flatDir {
             dirs project(':AliPay').file('libs')
         }
+        flatDir {
+            dirs project(':JDPay').file('libs')
+        }
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
