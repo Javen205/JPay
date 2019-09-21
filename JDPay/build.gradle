@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.github.johnrengelman.shadow'
 version = "0.0.6"
 group = "com.github.javen205"
 
@@ -36,6 +37,6 @@ dependencies {
 
     api(name: 'jdPaySDK_Android_JDMall_20190219', ext: 'aar')
 
-    implementation 'com.google.code.gson:gson:2.8.2'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.okhttp3:okhttp:4.2.0'
 }
